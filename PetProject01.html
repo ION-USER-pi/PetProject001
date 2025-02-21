@@ -1,0 +1,936 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PetProject01</title>
+        <!-- Link Font Awesome for icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+        <!-- Linking Swiper CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+        <style>
+        /* Importing Google fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Miniver&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        :root {
+            /* Colors */
+            --white-color: #fff;
+            --dark-color: #252525;
+            --primary-color: #3b141c;
+            --secondary-color: #f3961c;
+            --light-pink-color: #faf4f5;
+            --medium-gray-color: #ccc;
+        
+            /* Font size */
+            --font-size-s: 0.9rem;
+            --font-size-n: 1rem;
+            --font-size-m: 1.12rem;
+            --font-size-l: 1.5rem;
+            --font-size-xl: 2rem;
+            --font-size-xxl: 2.3rem;
+        
+            /* Font weight */
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+        
+            /* Border radius */
+            --border-radius-s: 8px;
+            --border-radius-m: 30px;
+            --border-radius-circle: 50%;
+        
+            /* Site max width*/
+            --site-max-width: 1300px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Stylings for whole site */
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .section-content {
+            margin: 0 auto;
+            padding: 0 20px;
+            max-width: var(--site-max-width);
+        }
+
+        .section-title {
+            text-align: center;
+            padding: 60px 0 60px;
+            text-transform: uppercase;
+            font-size: var(--font-size-xl);
+        }
+
+        .section-title::after {
+            content: "";
+            width: 80px;
+            height: 5px;
+            display: block;
+            margin: 10px auto 0;
+            border-radius: var(--border-radius-s);
+            background: var(--secondary-color);
+        }
+
+        /* Navbar styling */
+        header {
+            position: fixed;
+            width: 100%;
+            z-index: 5;
+            background: var(--primary-color);
+        }
+
+        header .navbar {
+            display: flex;
+            padding: 20px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar .nav-logo .logo-text {
+            color: var(--white-color);
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            
+        }
+
+        .navbar .nav-menu {
+            display: flex;
+            gap: 10px;
+        }
+
+        .navbar .nav-menu .nav-link {
+            padding: 10px 18px;
+            color: var(--white-color);
+            font-size: var(--font-size-m);
+            border-radius: var(--border-radius-m);
+            transition: 0.3s ease;
+        }
+
+        .navbar .nav-menu .nav-link:hover {
+            color: var(--primary-color);
+            background: var(--secondary-color);
+        }
+
+        .navbar #menu-close-button, 
+        .navbar #menu-open-button {
+            display: none;
+        }
+
+        /* Hero section styling */
+        .hero-section {
+            min-height: 100vh;
+            background: var(--primary-color);
+        }
+
+        .hero-section .section-content {
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--white-color);
+            justify-content: space-between;
+        }
+
+        .hero-section .hero-details .title {
+            font-size: var(--font-size-xxl);
+            color: var(--secondary-color);
+            font-family: "Miniver", sans-serif;
+        }
+
+        .hero-section .hero-details .subtitle {
+            margin-top: 8px;
+            max-width: 70%;
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+        }
+
+        .hero-section .hero-details .description {
+            max-width: 70%;
+            margin: 24px 0 40px;
+            font-size: var(--font-size-m);
+        }
+
+        .hero-section .hero-details .buttons {
+            display: flex;
+            gap: 23px;
+        }
+
+        .hero-section .hero-details .button {
+            padding: 10px 26px;
+            border: 2px solid transparent;
+            color: var(--primary-color);
+            border-radius: var(--border-radius-m);
+            background: var(--secondary-color);
+            font-weight: var(--font-weight-medium);
+            transition: 0.3s ease;
+        }
+
+        .hero-section .hero-details .button:hover,
+        .hero-section .hero-details .contact-us:hover {
+            color: var(--white-color);
+            border-color: var(--secondary-color);
+            background: transparent;
+        }
+
+        .hero-section .hero-details .contact-us {
+            color: var(--primary-color);
+            border-color: var(--secondary-color);
+            background: var(--white-color);
+        }
+
+        .hero-section .hero-image-wrapper {
+            max-width: 500px;
+            margin-right: 30px;
+        }
+
+        /* About section styling */
+        .about-section {
+            padding: 120px 0;
+            background: var(--light-pink-color);
+        }
+
+        .about-section .section-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .about-section .about-image-wrapper .about-image {
+            width: 400px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: var(--border-radius-circle);
+        }
+
+        .about-section .about-details .section-title {
+            padding: 0;
+        }
+
+        .about-section .about-details {
+            max-width: 50%;
+        }
+
+        .about-section .about-details .text {
+            line-height: 30px;
+            margin: 50px 0 30px;
+            font-size: var(--font-size-m);
+        }
+
+        .about-section .social-link-list {
+            display: flex;
+            gap: 25px;
+        }
+
+        .about-section .social-link-list .social-link {
+            color: var(--primary-color);
+            font-size: var(--font-size-l);
+            transition: 0.2s ease;
+        }
+
+        .about-section .social-link-list .social-link:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Menu section styling */
+        .menu-section {
+            color: var(--white-color);
+            background: var(--dark-color);
+            padding: 50px 0 100px;
+        }
+
+        .menu-section .menu-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 110px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .menu-section .menu-list .menu-item {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+            justify-content: space-between;
+            width: calc(100% / 3 - 110px);
+        }
+
+        .menu-section .menu-list .menu-item img {
+            max-width: 83%;
+            aspect-ratio: 1;
+            margin-bottom: 15px;
+            object-fit: contain;
+        }
+
+        .menu-section .menu-list .menu-item .name {
+            margin: 12px 0;
+            font-size: var(--font-size-l);
+            font-weight: var(--font-weight-semibold);
+        }
+
+        .menu-section .menu-list .menu-item .text {
+            font-size: var(--font-size-m);
+        }
+
+        /* Testimonials section styling */
+        .testimonials-section {
+            padding: 50px 0 100px;
+            background: var(--light-pink-color);
+        }
+
+        .testimonials-section .slider-container {
+            overflow: hidden;
+            margin: 0 60px 50px;
+        }
+
+        .testimonials-section .testimonials {
+            user-select: none;
+            display: flex;
+            padding: 35px;
+            text-align: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .testimonials-section .testimonials .user-image {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border-radius: var(--border-radius-circle);
+        }
+
+        .testimonials-section .testimonials .name {
+            margin-bottom: 16px;
+            font-size: var(--font-size-m);
+        }
+
+        .testimonials-section .testimonials .feedback {
+            line-height: 25px;
+            display: block;
+        }
+
+        .testimonials-section .swiper-pagination-bullet {
+            width: 15px;
+            height: 15px;
+            opacity: 1;
+            background: var(--secondary-color);
+        }
+
+        .testimonials-section .swiper-slide-button {
+            margin-top: -50px;
+            color: var(--secondary-color);
+            transition: 0.3s ease;
+        }
+
+        .testimonials-section .swiper-slide-button:hover {
+            color: var(--primary-color);
+        }
+
+        /* Gallery section styling */
+        .gallery-section {
+            padding: 50px 0 100px;
+        }
+
+        .gallery-section .gallery-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+        }
+
+        .gallery-section .gallery-list .gallery-item {
+            overflow: hidden;
+            border-radius: var(--border-radius-s);
+            width: calc(100% / 3 - 32px);
+        }
+
+        .gallery-section .gallery-item .gallery-image {
+            width: 100%;
+            height: 100%;
+            cursor: zoom-in;
+            transition: 0.3s ease;
+        }
+
+        .gallery-section .gallery-item:hover .gallery-image {
+            transform: scale(1.3);
+        }
+
+        /* Contact section styling */
+        .contact-section {
+            padding: 50px 0 100px;
+            background: var(--light-pink-color);
+        }
+
+        .contact-section .section-content {
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        .contact-section .contact-info-list .contact-info {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+            align-items: center;
+        }
+
+        .contact-section .contact-info-list .contact-info i {
+            font-size: var(--font-size-m);
+        }
+
+        .contact-section .contact-form .form-input {
+            width: 100%;
+            height: 50px;
+            padding: 0 12px;
+            outline: none;
+            margin-bottom: 16px;
+            background: var(--white-color);
+            border-radius: var(--border-radius-s);
+            border: 1px solid var(--medium-gray-color);
+        }
+
+        .contact-section .contact-form {
+            max-width: 50%;
+        }
+
+        .contact-section .contact-form .form-input:focus {
+            border-color: var(--secondary-color);
+        }
+
+        .contact-section .contact-form textarea {
+            height: 100px;
+            padding: 12px;
+            resize: vertical;
+        }
+
+        .contact-section .contact-form .submit-button {
+            padding: 10px 26px;
+            margin-top: 10px;
+            color: var(--white-color);
+            font-size: var(--font-size-m);
+            font-weight: var(--font-weight-medium);
+            background: var(--primary-color);
+            border-radius: var(--border-radius-m);
+            border: 1px solid var(--primary-color);
+            transition: 0.3s ease;
+        }
+
+        .contact-section .contact-form .submit-button:hover {
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        /* Footer section styling */
+        .footer-section {
+            padding: 20px 0;
+            background: var(--dark-color);
+        }
+
+        .footer-section .section-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .footer-section .copyright-text, 
+        .footer-section .social-link, 
+        .footer-section .policy-link {
+            color: var(--white-color);
+            transition: 0.2s ease;
+        }
+
+        .footer-section .social-link-list {
+            display: flex;
+            gap: 25px;
+        }
+
+        .footer-section .social-link-list .social-link {
+            font-size: var(--font-size-l);
+        }
+
+        .footer-section .social-link-list .social-link:hover,
+        .footer-section .policy-text .policy-link:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-section .policy-text .separator {
+            margin: 0 5px;
+            color: var(--white-color);
+        }
+
+        /* Responsive media query code for max width 1024px */
+        @media screen and (max-width: 1024px) {
+            .menu-section .menu-list {
+                gap: 60px;
+            }
+            .menu-section .menu-list .menu-item {
+                width: calc(100% / 3 - 60px);
+            }
+        }
+
+        /* Responsive media query code for max width 900px */
+        @media screen and (max-width: 900px) {
+            :root {
+                --font-size-m: 1rem;
+                --font-size-l: 1.3rem;
+                --font-size-xl: 1.5rem;
+                --font-size-xxl: 1.8rem;
+            }
+
+            body.show-mobile-menu header::before {
+                content: "";
+                position: fixed;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 100%;
+                backdrop-filter: blur(5px);
+                background: rgba(0,0,0,0.2);
+                
+            }
+
+            .navbar #menu-close-button, 
+            .navbar #menu-open-button {
+                display: block; 
+                font-size: var(--font-size-l);
+                color: var(--white-color);
+            }
+
+            .navbar #menu-close-button {
+                position: absolute;
+                right: 30px;
+                top: 30px;
+                color: var(--dark-color);
+            }
+
+            .navbar .nav-menu {
+                display: block;
+                position: fixed;
+                left: -300px;
+                top: 0;
+                width: 300px;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 100px;
+                background: var(--white-color);
+                transition: left 0.2s ease;
+            }
+
+            body.show-mobile-menu .navbar .nav-menu {
+                left: 0;
+            }
+
+            .navbar .nav-menu .nav-link {
+                color: var(--dark-color);
+                display: block;
+                margin-top: 17px;
+                font-size: var(--font-size-l);
+            }
+
+            .hero-section .section-content {
+                gap: 50px;
+                text-align: center;
+                padding: 30px 20px 20px;
+                flex-direction: column-reverse;
+                justify-content: center;
+            }
+
+            .hero-section .hero-details .subtitle, 
+            .hero-section .hero-details .description, 
+            .about-section .about-details, 
+            .contact-section .contact-form {
+                max-width: 100%;
+            }
+
+            .hero-section .hero-details .buttons {
+                justify-content: center;
+            }
+
+            .hero-section .hero-image-wrapper {
+                max-width: 270px;
+                margin-right: 0;
+            }
+
+            .about-section .section-content {
+                gap: 70px;
+                flex-direction: column-reverse;
+            }
+
+            .about-section .about-image-wrapper .about-image {
+                width: 100%;
+                height: 100%;
+                max-width: 250px;
+                aspect-ratio: 1;
+            }
+
+            .menu-section .menu-list {
+                gap: 30px;
+            }
+
+            .menu-section .menu-list .menu-item {
+                width: calc(100% / 2 - 30px);
+            }
+
+            .menu-section .menu-list .menu-item img {
+                max-width: 200px;
+            }
+
+            .gallery-section .gallery-list {
+                gap: 30px;
+            }
+
+            .gallery-section .gallery-list .gallery-item {
+                width: calc(100% / 2 - 30px);
+            }
+
+            .contact-section .section-content {
+                align-items: center;
+                flex-direction: column-reverse;
+            }
+        }
+
+        /* Responsive media query code for max width 640px */
+        @media screen and (max-width: 640px) {
+            .menu-section .menu-list {
+                gap: 60px;
+            }
+
+            .menu-section .menu-list .menu-item,
+            .gallery-section .gallery-list .gallery-item  {
+                width: 100%;
+            }
+
+            .testimonials-section .slider-container {
+                margin: 0 0 30px;
+            }
+
+            .testimonials-section .swiper-slide-button {
+                display: none;
+            }
+
+            .footer-section .section-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+        </style>
+    </head>
+    <body>
+        <!-- Header / Navbar -->
+        <header>
+            <nav class="navbar section-content">
+                <a href="#" class="nav-logo">
+                    <h2 class="logo-text">☕ Coffee</h2>
+                </a>
+                <ul class="nav-menu">
+                    <button id="menu-close-button" class="fas fa-times"></button>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#menu" class="nav-link">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#testimonials" class="nav-link">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#gallery" class="nav-link">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+
+                <button id="menu-open-button" class="fas fa-bars"></button>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Hero section -->
+            <section class="hero-section">
+                <div class="section-content">
+                    <div class="hero-details">
+                        <h2 class="title">Prime Coffee</h2>
+                        <h3 class="subtitle">I’ve served coffee to dinosaurs, knights, and your great-great-grandma. Trust me, this blend will get you through… well, whatever era you’re stuck in.
+                        </h3>
+                        <p class="description">Welcome to our Coffee space, where every bean has a story and every cup feels like home.</p>
+                        
+                        <div class="buttons">
+                            <a href="#" class="button order-now">Order Now</a>
+                            <a href="#" class="button contact-us">Contact Us</a>
+                        </div>
+                    </div>
+                    <div class="hero-image-wrapper">
+                        <img src="/images/coffee-hero-section.png" alt="Hero coffee cup" class="hero-image">
+                    </div>
+                </div>
+            </section>
+
+            <!-- About section -->
+            <section class="about-section" id="about">
+                <div class="section-content">
+                    <div class="about-image-wrapper">
+                        <img src="/images/about-image.jpg" alt="About" class="about-image">
+                    </div>
+                    <div class="about-details">
+                        <h2 class="section-title">About Us</h2> 
+                        <p class="text">At Coffee House in Andijan, Uzbekistan, we are committed to being a cherished spot for coffee enthusiasts and those looking for meaningful conversations. We take great pride in offering a warm and welcoming environment, where every cup of coffee is brewed with care, and every visit feels like a moment of peace. Whether you're here to catch up with friends or enjoy a quiet moment to yourself, our cozy ambiance and excellent service make us a perfect place to relax, savor a great drink, and indulge in delightful conversations.
+                        </p>
+                        <div class="social-link-list">
+                            <a href="#" class="social-link"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Menu section -->
+            <section class="menu-section" id="menu">
+                <h2 class="section-title">Our Menu</h2>
+                <div class="section-content">
+                    <ul class="menu-list">
+                        <li class="menu-item">
+                            <img src="/images/hot-beverages.png" alt="Hot-Beverages">
+                            <h3 class="name">Liquid Sunshine</h3>
+                            <p class="text">Where steaming elixirs meet morning fog, transforming zombies into functioning humans one sip at a time.</p>
+                        </li>
+                        <li class="menu-item">
+                            <img src="/images/cold-beverages.png" alt="Cold-Beverages">
+                            <h3 class="name">Frost & Froth</h3>
+                            <p class="text">Velvety cold concoctions that whisper tales of snowfields while your office thermostat wages war against comfort.</p>
+                        </li>
+                        <li class="menu-item">
+                            <img src="/images/refreshment.png" alt="Refreshment">
+                            <h3 class="name">Revival Potions</h3>
+                            <p class="text">Nature's nectar reincarnated with ice crystals – salvation for parched souls and overheated conversations.</p>
+                        </li>
+                        <li class="menu-item">
+                            <img src="/images/special-combo.png" alt="Special Combos">
+                            <h3 class="name">Duet of Delights</h3>
+                            <p class="text">Culinary love stories where beverages and bites share a plate and promise never to leave each other.</p>
+                        </li>
+                        <li class="menu-item">
+                            <img src="/images/desserts.png" alt="Dessert">
+                            <h3 class="name">Sweet Finales</h3>
+                            <p class="text">Decadent journeys that transport taste buds to parallel universes where calories are merely theoretical constructs.
+                            </p>
+                        </li>
+                        <li class="menu-item">
+                            <img src="/images/burger-frenchfries.png" alt="Burger & French Fries">
+                            <h3 class="name">Hand-Held Happiness</h3>
+                            <p class="text">Savory packages of joy paired with golden sticks of potato perfection – for when hunger plays peek-a-boo between meals.</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Testimonials section -->
+            <section class="testimonials-section" id="testimonials">
+                <h2 class="section-title">Testimonials</h2>
+                <div class="section-content">
+                    <div class="slider-container swiper">
+                        <div class="swiper-wrapper">
+                            <div class="testimonials swiper-slide">
+                                <img src="/images/user-1.jpg" alt="User" class="user-image">
+                                <h3 class="name">Sarah Johnson</h3>
+                                <i class="feedback">"This French roast is absolutely perfect! Deep rich flavor without being bitter. I'm already planning my next order - it's become my morning essential."</i>
+                            </div>
+                            <div class="testimonials swiper-slide">
+                                <img src="/images/user-2.jpg" alt="User" class="user-image">
+                                <h3 class="name">James Wilson</h3>
+                                <i class="feedback">"Their espresso blend hits all the right notes - smooth yet bold with a great finish. Extra points for the super fast shipping. My coffee machine thanks you!"</i>
+                            </div>
+                            <div class="testimonials swiper-slide">
+                                <img src="/images/user-3.jpg" alt="User" class="user-image">
+                                <h3 class="name">Michael Brown</h3>
+                                <i class="feedback">"The mocha blend is a game-changer! Rich chocolate notes with that classic French roast depth. Arrived quickly and the aroma when I opened the package was heavenly."</i>
+                            </div>
+                            <div class="testimonials swiper-slide">
+                                <img src="/images/user-4.jpg" alt="User" class="user-image">
+                                <h3 class="name">Emily Harris</h3>
+                                <i class="feedback">"You can taste the quality in every cup. These beans are incredibly fresh and the delivery was faster than expected. This coffee shop has earned a loyal customer!"</i>
+                            </div>
+                            <div class="testimonials swiper-slide">
+                                <img src="/images/user-5.jpg" alt="User" class="user-image">
+                                <h3 class="name">Anthony Thomson</h3>
+                                <i class="feedback">"Finally found a decaf that doesn't taste like a compromise! Smooth, flavorful, and arrived right on time. Perfect for my evening coffee cravings."</i>
+                            </div>
+                        </div>
+                        
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-prev swiper-slide-button"></div>
+                        <div class="swiper-button-next swiper-slide-button"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery section -->
+            <section class="gallery-section" id="gallery">
+                <h2 class="section-title">Gallery</h2>
+                <div class="section-content">
+                    <ul class="gallery-list">
+                        <li class="gallery-item">
+                            <img src="/images/gallery-1.jpg" alt="Gallery" class="gallery-image">
+                        </li>
+                        <li class="gallery-item">
+                            <img src="/images/gallery-2.jpg" alt="Gallery" class="gallery-image">
+                        </li>
+                        <li class="gallery-item">
+                            <img src="/images/gallery-3.jpg" alt="Gallery" class="gallery-image">
+                        </li>
+                        <li class="gallery-item">
+                            <img src="/images/gallery-4.jpg" alt="Gallery" class="gallery-image">
+                        </li>
+                        <li class="gallery-item">
+                            <img src="/images/gallery-5.jpg" alt="Gallery" class="gallery-image">
+                        </li>
+                        <li class="gallery-item">
+                            <img src="/images/gallery-6.jpg" alt="Gallery" class="gallery-image">
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Contact section -->
+            <section class="contact-section" id="contact">
+                <h2 class="section-title">Contact Us</h2>
+                <div class="section-content">
+                    <ul class="contact-info-list">
+                        <li class="contact-info">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <p>Andijan, Sharda University, Uzbekistan.</p>
+                        </li>
+                        <li class="contact-info">
+                            <i class="fa-solid fa-envelope"></i>
+                            <p>itschoolm4@gmail.com</p>
+                        </li>
+                        <li class="contact-info">
+                            <i class="fa-solid fa-phone"></i>
+                            <p>+998 (93) 715 65-61</p>
+                        </li>
+                        <li class="contact-info">
+                            <i class="fa-solid fa-clock"></i>
+                            <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
+                        </li>
+                        <li class="contact-info">
+                            <i class="fa-solid fa-clock"></i>
+                            <p>Saturday: 10:00 AM - 3:00 PM</p>
+                        </li>
+                        <li class="contact-info">
+                            <i class="fa-solid fa-clock"></i>
+                            <p>Sunday: Closed</p>
+                        </li>
+                        <li class="contact-info">
+                            <i class="fa-solid fa-globe"></i>
+                            <p>https://t.me/SUUz_oner</p>
+                        </li>
+                    </ul>
+
+                    <form action="#" class="contact-form">
+                        <input type="text" placeholder="Your name" class="form-input" required>
+                        <input type="email" placeholder="Your email" class="form-input" required>
+                        <textarea placeholder="Your message" class="form-input" required></textarea>
+                        <button class="button submit-button">Submit</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Footer section-->
+            <footer class="footer-section">
+                <div class="section-content">
+                    <p class="copyright-text">© 2025 Coffee Shop. All rights reserved.</p>
+                    
+                    <div class="social-link-list">
+                        <a href="#" class="social-link"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                    
+                    <p class="policy-text">
+                        <a href="#" class="policy-link">Privacy Policy</a>
+                        <span class="separator">|</span>
+                        <a href="#" class="policy-link">Terms of Service</a>
+                    </p>
+                </div>
+            </footer>
+
+            <!-- Add Swiper JS library first -->
+            <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+            <!-- Then add your custom JavaScript -->
+            <script>
+                // Mobile menu elements
+                const menuOpenButton = document.querySelector("#menu-open-button");
+                const menuCloseButton = document.querySelector("#menu-close-button");
+
+                // Mobile menu toggle functionality
+                menuOpenButton.addEventListener("click", () => {
+                    document.body.classList.add("show-mobile-menu");
+                });
+
+                menuCloseButton.addEventListener("click", () => {
+                    document.body.classList.remove("show-mobile-menu");
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener("click", (e) => {
+                    if(document.body.classList.contains("show-mobile-menu") && 
+                        !e.target.closest('.nav-menu') && 
+                        !e.target.closest('#menu-open-button')) {
+                        document.body.classList.remove("show-mobile-menu");
+                    }
+                });
+
+                // Initialize Swiper for testimonials
+                const swiper = new Swiper(".swiper", {
+                    loop: true,
+                    autoplay: {
+                        delay: 3000,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                    },
+                });
+            </script>
+        </body>
+    </html>
